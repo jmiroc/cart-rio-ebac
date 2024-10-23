@@ -11,6 +11,8 @@ int registro() //função responsável por cadastrar os usuários no sistema
 	char nome[40];
 	char sobrenome[40];
 	char cargo[40];
+	int opcao=0;
+	int laco=1;
 	//fim da criação de variáveis/string
 	
 	printf("Digite o CPF à ser cadastrado: "); //coletando informações do usuário
@@ -55,8 +57,30 @@ int registro() //função responsável por cadastrar os usuários no sistema
 	file = fopen(arquivo, "a");//abertura do arquivo para alteração/adição de informações
 	fprintf(file, cargo);//salva o valor da variavel
 	fclose(file);//fecha o arquivo
+	
+	printf("\nGostaria de cadastrar outro usuário?\n");
+	printf("\nDigite '1' para SIM e '2' para NAO: ");
+	
+	scanf("%d", opcao);
 		
-	system("pause"); //congelamento da tela após a inserção das informações antes de voltar para o menu principal
+	system("cls");
+
+	switch(opcao)
+	{
+		case 1:
+		registro();
+		break;
+		
+		case 2:
+		system("pause");
+		break;
+			
+		default:
+		printf("Essa opção não está disponível!\n");
+		system("pause"); 
+		break;
+	}
+	system("pause"); 
 	
 }
 
@@ -131,6 +155,8 @@ int main ()
 		printf("\t1 - Registrar nomes\n"); 
 		printf("\t2 - Consultar nomes\n"); 
 		printf("\t3 - Deletar nomes\n\n"); 
+		printf("\t4 - Sair do sistema\n\n"); 
+
 		printf("Opção:");
 	
 		scanf ("%d", &opcao); 
@@ -150,6 +176,11 @@ int main ()
 			case 3:
 			deletar();
 			break; 
+			
+			case 4:
+			printf("Obrigado por utilizado o sistema!\n");
+			return 0;
+			break;
 			
 			default:
 			printf("Essa opção não está disponível\n");
